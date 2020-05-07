@@ -1,0 +1,28 @@
+header {
+    /* background-color: rgb(221, 132, 59);  */
+    background-color: #1b3a57;
+    /* #3b5998 ; */
+    position: relative;
+    padding: 20px;
+    font-size: 20px;
+    color: whitesmoke;
+    /* font-family: 'Open Sans Condensed', arial, sans; */
+}
+
+.position-right{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+button{
+    background: none;
+    color: whitesmoke;
+    outline: none;
+    border: none;
+    font-size: 14px;
+}
+
+button:hover{
+    cursor: pointer;
+}

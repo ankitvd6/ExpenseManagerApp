@@ -1,0 +1,28 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="cont-0">
+    <div class="cont-1">
+        
+        <form class="frm" [formGroup]="formGroup" (ngSubmit)="onSubmit()"> 
+            <div class="row">
+                <label for="heading">Title : </label>
+                <input type="text" name="heading" formControlName="heading"/>
+            </div>
+            <div class="row">
+                <label for="amount">Amount : </label>
+                <input type="text" name="amount" formControlName="amount"/>
+            </div>
+            <div class="row">
+                <label for="heading">Details : </label>
+                <input type="text" name="description" formControlName="description"/>
+            </div>
+            <div class="row">
+                <label for="heading">Date : </label>
+                <input type="date" name="date" placeholder="" formControlName="date"/>
+            </div>
+            <button type="submit" name="submit" class="btn submit flex-item-add" >
+                <i class="material-icons">add_circle_outline</i>
+            </button>
+        </form>
+    </div>
+    </div>

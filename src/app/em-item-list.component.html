@@ -1,0 +1,20 @@
+<div class="search-box">
+    <input type="text" [(ngModel)]="searchInput" placeholder="Search expense">
+</div>
+<section class="list">
+    <ul *ngFor="let expense of expenses" >
+        <li *ngIf="expense.heading.toLowerCase().includes(searchInput.toLowerCase())"  class="cnt-1" routerLink="/{{ expense.heading }}">
+            
+                <span >{{ expense.heading }}: </span>
+                <span>Rs {{ expense.amount }}</span>
+                
+            <div class="actions" >
+                <button (click)="onDeleteExpenseItem(expense)">Delete</button>
+                <button routerLink="/{{ expense.heading }}">Show Detail</button>
+                
+            </div>
+        </li>
+    </ul>
+</section>
+
+
