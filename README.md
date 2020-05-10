@@ -1,3 +1,12 @@
+An application keep a track of your expenses with crud features along with search features. Built using **Angular**.
+This is my first angular single page application project. Currently it does not have a feature to store your expenses. But very soon an updated version of this will be having features like: 
+1. Ability to save the expenses.
+2. **Login and logout** using Google's Firebase.
+3. Different expense history for different users.
+
+To add feature to this app you can clone this into your local workspace. Or directly fork it into your own github repository and then add features to it and create a Pull request along with details of what is the PR is for.
+
+
 # ExpenseManager
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
