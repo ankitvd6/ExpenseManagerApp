@@ -26,17 +26,14 @@ export class ExpenseEditFormComponent implements OnInit {
             date: this.formBuilder.control(''),
         });
 
-        this.expenseManagerService.getExpenseUpdateElement(heading)
-        .subscribe(data => {
-            this.formGroup.setValue(data.expense);
-            this.expenseItem = data.expense;
-            this.updateIndex = data.index;
-        });     
+        let data = this.expenseManagerService.getExpenseUpdateElement(heading);  
+        this.formGroup.setValue(data.expense);
+        this.expenseItem = data.expense;
+        this.updateIndex = data.index;   
     }
 
     onSubmit(){
-        this.expenseManagerService.update(this.formGroup.value, this.updateIndex)
-        .subscribe();    
-        this.router.navigateByUrl('/')    
+        this.expenseManagerService.update(this.formGroup.value, this.updateIndex);
+        this.router.navigateByUrl('/');    
     }
 }

@@ -1,28 +1,11 @@
-header {
-    /* background-color: rgb(221, 132, 59);  */
+.header { 
     background-color: #1b3a57;
-    /* #3b5998 ; */
     position: relative;
-    padding: 20px;
-    font-size: 20px;
+    padding: 30px 80px;
     color: whitesmoke;
-    /* font-family: 'Open Sans Condensed', arial, sans; */
+    margin-bottom: 80px;
 }
 
-.position-right{
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-
-button{
-    background: none;
-    color: whitesmoke;
-    outline: none;
-    border: none;
-    font-size: 14px;
-}
-
-button:hover{
-    cursor: pointer;
+section{
+    margin-bottom: 200px;
 }

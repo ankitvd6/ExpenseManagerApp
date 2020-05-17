@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpenseManagerService } from './em.service';
 import { Expense } from './expense';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
     selector: 'em-item-list',
@@ -9,34 +11,24 @@ import { Expense } from './expense';
 })
 
 export class ExpenseItemListComponent implements OnInit{
-    expenses;
-    selectedExpense;
+    expenses: Expense[];
     searchInput='';
+    totalExpense:number;
 
-    constructor(private expenseManagerService: ExpenseManagerService){}
+    constructor(private expenseManagerService: ExpenseManagerService, private activatedRoute: ActivatedRoute){}
 
     ngOnInit(){
         this.getAllExpenses();
-        console.log(this.expenses.length);
     }
 
     getAllExpenses(){
-        this.expenseManagerService.getAll().subscribe((expenses) => {
-            this.expenses = expenses;
-        });
+        this.expenses = this.expenseManagerService.getAll();
     }
 
     onDeleteExpenseItem(expenseItem: Expense){
         console.log("onDelete clicked"+expenseItem.description);
-        this.expenseManagerService.delete(expenseItem)
-        .subscribe(() => this.getAllExpenses());
-        // this.showExpenseDetail(null);
+        this.expenseManagerService.delete(expenseItem);
+        this.getAllExpenses();
     }
-
-    showExpenseDetail(expenseItem){
-        console.log("clicked show");
-        this.selectedExpense = expenseItem;
-    }
-
 
 }

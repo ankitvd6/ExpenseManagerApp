@@ -1,17 +1,19 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
 <div class="search-box">
-    <input type="text" [(ngModel)]="searchInput" placeholder="Search expense">
+    <p>Search Expense: </p><input type="text" [(ngModel)]="searchInput" placeholder="Enter name">
 </div>
 <section class="list">
     <ul *ngFor="let expense of expenses" >
         <li *ngIf="expense.heading.toLowerCase().includes(searchInput.toLowerCase())"  class="cnt-1" routerLink="/{{ expense.heading }}">
-            
+            <!-- {{ totalExpense }} -->
                 <span >{{ expense.heading }}: </span>
                 <span>Rs {{ expense.amount }}</span>
                 
             <div class="actions" >
                 <button (click)="onDeleteExpenseItem(expense)">Delete</button>
                 <button routerLink="/{{ expense.heading }}">Show Detail</button>
-                
             </div>
         </li>
     </ul>
