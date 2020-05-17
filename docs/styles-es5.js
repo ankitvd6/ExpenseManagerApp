@@ -353,7 +353,7 @@
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! E:\GitProjects\ExpenseManager\src\styles.css */
+    /*! E:\GitProjects\ExpenseManagerApp\src\styles.css */
     "./src/styles.css");
     /***/
   }
