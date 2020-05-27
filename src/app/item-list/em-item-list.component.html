@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<body>
+<div class="custom-jumbotron" *ngIf="totalExpense">
+    Total expense: {{ totalExpense }}
+</div>
+<script src="https://kit.fontawesome.com/c9b33c0b6c.js" crossorigin="anonymous"></script>
+<div class="feature-box">
+    <div class="search-box">
+        <p>Search Expense: </p><input type="text" [(ngModel)]="searchInput" placeholder="Enter name">
+    </div>
+    <div class="filter">
+        <div class="drop-down">
+            Filter By: <select name="sortParameter" [(ngModel)]="sortParameter">
+                <option value="" selected>Select</option>
+                <option value="amount">Amount</option>
+                <option value="heading">Name</option>
+                <option value="date">Date</option>
+            </select>
+        </div>
+        <div class="drop-down">
+            Sort: <select name="sortOrder" [(ngModel)]="sortOrder">
+                <option value="" selected>Order type</option>
+                <option value="asc">Ascending</option>
+                <option value="desc">descending</option>
+            </select>
+        </div>
+    </div>
+    
+</div>
+
+<section class="list">
+    <ul *ngFor="let expense of expenses | async | sortBy: sortOrder: sortParameter " >
+        <li *ngIf="expense.heading.toLowerCase().includes(searchInput.toLowerCase())"  class="cnt-1">
+            
+                <span>{{ expense.heading }}: </span>
+                <span class="amount"><img src="../../assets/icons/coinsStack.svg" width="30" height="30">{{ expense.amount }}</span>
+                
+                
+            <div class="actions" >
+                <!-- <button>Delete</button> -->
+                <button (click)="onDeleteExpenseItem(expense)">Delete</button>
+                <button routerLink="/{{ expense.id }}">Show Detail</button>
+            </div>
+        </li>
+    </ul>
+</section>
+
+</body>
+
+

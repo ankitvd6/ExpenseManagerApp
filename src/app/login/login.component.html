@@ -1,0 +1,38 @@
+<div class="cont-0">
+    
+    <div class="cont-1">
+        <div class="error message" *ngIf="error">
+            *{{ error }}
+        </div>
+        <form class="frm" #form="ngForm" (ngSubmit)="onSubmit(form)" [class.loading]="loading"> 
+            
+                <label *ngIf="isSignUp()" for="FirstName" >FirstName : </label>
+                <input *ngIf="isSignUp()" type="text" name="firstName" ngModel/>
+                
+                <label *ngIf="isSignUp()" for="LastName" >LastName : </label>
+                <input *ngIf="isSignUp()" type="text" name="lastName" ngModel/>
+            
+            
+                <label for="Email" >Email : </label>
+                <input type="text" name="email" placeholder="" ngModel/>
+                <label for="Password" >Password : </label>
+                <input type="text" name="password" placeholder=""  ngModel/>
+            
+            <!-- </div> -->
+            <div>   </div>
+            <div class="actions">
+                <button type="submit" name="signUp" class="btn submit" >{{ action | uppercase }}</button>
+                <span *ngIf="isLogin()">
+                    or
+                    <a (click)="action = 'signup'">Sign up</a>
+                </span>
+                <span *ngIf="isSignUp()">
+                    or
+                    <a (click)="action = 'login'">Login</a>
+                </span>
+            </div>
+            
+        </form>
+        
+    </div>
+    </div>

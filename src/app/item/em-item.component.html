@@ -1,0 +1,21 @@
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<div *ngIf="expenseItem" class="cnt-0">
+    <div class="cnt-1">
+        <h2>{{expenseItem.heading}}</h2>
+        <div class="details">
+            <div>Spent : ₨: {{expenseItem.amount}}</div>
+            <div>On Date: {{expenseItem.date | date}}</div>
+            <div class="description">
+                <p>Details: {{expenseItem.description}}</p>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="edit" name="edit" (click)="editExpense(expenseItem)">Edit</button>
+            <button class="goBack" name="back" (click)="goBack()">Go Back</button>
+        </div>
+        
+    </div>
+</div>
