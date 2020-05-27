@@ -1,14 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ExpenseItemComponent } from './em-item.component';
-import { DashboardComponent } from './dashboard.component';
-import { ExpenseEditFormComponent } from './em-edit-form.component';
+import { AngularFireAuthGuard, redirectLoggedInTo, loggedIn, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { ExpenseItemComponent } from './item/em-item.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ExpenseEditFormComponent } from './update/em-edit-form.component';
+import { LoginComponent } from './login/login.component';
+import { map } from 'rxjs/operators';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
+const redirectLoggedInUserToDashboard = () => map(user => user ? ['dashboard', (user as any).uid]: true);
+const onlyAllowSelf = route => 
+  map( user => (!!user && route.params.id == (user as any).uid) || ['']);
 
 const routes: Routes =[
-  { path: '', component: DashboardComponent},
-  { path: 'edit', component: ExpenseEditFormComponent },
-  { path: ':heading', component: ExpenseItemComponent},
+  // { path: 'dashboard/:id', component: DashboardComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}},
+  { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInUserToDashboard}},
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'dashboard/:id', component: DashboardComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: onlyAllowSelf}},
+  { path: 'edit/:id', component: ExpenseEditFormComponent },
+  { path: ':id', component: ExpenseItemComponent},
+  
 ];
 
 @NgModule({

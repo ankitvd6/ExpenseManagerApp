@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false,
+  firebase : {
+    apiKey: "AIzaSyBQwQgbzoL-n54WcqvELVAnAHbP6moBiFo",
+    authDomain: "ankit-project-1.firebaseapp.com",
+    databaseURL: "https://ankit-project-1.firebaseio.com",
+    projectId: "ankit-project-1",
+    storageBucket: "ankit-project-1.appspot.com",
+    messagingSenderId: "240999329219",
+    appId: "1:240999329219:web:39d0b02e0c1f589ca9a176"
+  },
 };
 
 /*

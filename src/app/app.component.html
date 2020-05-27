@@ -1,6 +1,17 @@
-<h2 class="header"> Expense Manager</h2>
+<!-- <h2 class="header"> Expense Manager</h2>
+
+<section>
+  <router-outlet></router-outlet>
+</section> -->
+
+<header class="header">
+  <h3>Expense Manager</h3>
+  <div *ngIf="isLogIn()" class="position-right">
+    <button  name="signOut" (click)="onSignOut()">Sign out</button>
+  </div>
+</header>
+
 
 <section>
   <router-outlet></router-outlet>
 </section>
-
