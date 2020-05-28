@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<div class="cont-0">
+<!-- <div class="cont-0">
     <div class="cont-1">
         
         <form class="frm" [formGroup]="form" (ngSubmit)="onSubmit()"> 
@@ -24,9 +24,53 @@
                 <i class="material-icons">add_circle_outline</i>
             </button>
         </form>
-    </div>
+        -->
+    <!-- </div>
     <div class="go-back">
         <button type="button" (click)="goBack()" class="btn-back">Back</button>
     </div>
     
+    </div>  -->
+
+
+    
+<div class="cont-0">
+    
+    <div class="cont-1">
+        <div class="error-msg" *ngIf="errorMessage">
+            *{{errorMessage}}
+        </div>
+        <form class="frm" [formGroup]="form" novalidate (ngSubmit)="onSubmit()" #myForm="ngForm"> 
+            
+                <label for="heading">Title : </label>
+                <input type="text" name="heading" formControlName="heading"/>
+                
+                <label for="amount">Amount : </label>
+                <input type="number" name="amount" formControlName="amount"/>
+            
+            
+                <label for="heading">Details : </label>
+                <input type="text" name="description" formControlName="description"/>
+
+                <label for="heading">Date : </label>
+                <input type="date" name="date" placeholder=" " formControlName="date"/>
+                
+                <!-- <label for="heading">Category : </label>
+                <select id="catgegory" name="exp-cat">
+                    <option value="grocery">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                  </select> -->
+                  <!-- [disabled]="!formGroup.valid" -->
+            <div class="actions">
+                <button type="submit" name="submit" class="btn submit">
+                    <i class="material-icons">add_circle_outline</i>
+                </button>
+            </div>
+        </form>       
     </div>
+    <div class="go-back">
+        <button type="button" (click)="goBack()" class="btn-back">Home</button>
+    </div>
+</div>

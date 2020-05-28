@@ -35,8 +35,7 @@ export class LoginComponent implements OnInit {
       if(this.isSignUp()){
         resp = await this.afAuth.auth.createUserWithEmailAndPassword(email,password);
         await resp.user.updateProfile({displayName: `${firstName} ${lastName}`});
-        // await resp.user.updateProfile({firstName: `${firstName}`});
-        // await resp.user.updateProfile({lastName: `${lastName}`});
+
         await this.expenseManagerService.saveUserDetails();
         form.reset();
       }

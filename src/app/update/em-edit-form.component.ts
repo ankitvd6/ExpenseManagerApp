@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ExpenseManagerService } from '../em.service';
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from '@angular/common';
@@ -15,6 +15,7 @@ export class ExpenseEditFormComponent implements OnInit {
     form: FormGroup;
     expenseItem: Expense;
     updateIndex: number;
+    errorMessage
 
     constructor(private formBuilder: FormBuilder, private expenseManagerService: ExpenseManagerService, 
         private activatedRoute: ActivatedRoute, private router: Router, private location: Location) { }
@@ -23,36 +24,34 @@ export class ExpenseEditFormComponent implements OnInit {
         let eid = this.activatedRoute.snapshot.paramMap.get('id');
         this.form = this.formBuilder.group({
             id: this.formBuilder.control(''),
-            heading : this.formBuilder.control(''),
-            amount: this.formBuilder.control(''),
+            heading : this.formBuilder.control('', Validators.required),
+            amount: this.formBuilder.control('', Validators.required),
             description: this.formBuilder.control(''),
-            date: this.formBuilder.control(''),
+            date: this.formBuilder.control('', Validators.required),
         });
-        console.log(`got id : ${eid}`);
         
         this.expenseManagerService.findExpenseById(eid).subscribe(item => {
-            console.log(`findByID itemId: ${item.id} heading : ${item.heading} `);
-            // this.form = this.formBuilder.group({
-            //     id: this.formBuilder.control(''),
-            //     heading : this.formBuilder.control(''),
-            //     amount: this.formBuilder.control(''),
-            //     description: this.formBuilder.control(''),
-            //     date: this.formBuilder.control(''),
-            // });
-
             this.form.setValue(item);
         });
     }
 
     goBack(): void {
-        this.location.back();
+        // this.location.back();
+        this.router.navigateByUrl('');
     }
 
     onSubmit(){
-        // this.expenseManagerService.update(this.formGroup.value, this.updateIndex);
-        console.log(`Inside onSubmit of update-form formGroup: ${this.form.value} formGroup.id : ${this.form.value.id}`);
-        
-        this.expenseManagerService.update(this.form.value);
-        this.router.navigateByUrl('/dashboard/:id');    
+        if(this.form.valid) {
+            this.expenseManagerService.update(this.form.value);
+            this.router.navigateByUrl('/dashboard/:id');    
+        }
+        else{
+            if(this.form.get('heading').hasError('required'))
+                this.errorMessage = 'Title field is required';
+            else if(this.form.get('amount').hasError('required'))
+                this.errorMessage = 'Amount field is required';
+            else if(this.form.get('date').hasError('required'))
+                this.errorMessage = 'Date field is required';
+        }
     }
 }
