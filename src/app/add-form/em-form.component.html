@@ -1,45 +1,11 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
-<!-- <div class="cont-0">
-    <div class="cont-1">
-        
-        <form class="frm" [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" #myForm="ngForm"> 
-            <div class="row">
-                <label for="heading">Title : </label>
-                <input type="text" name="heading" formControlName="heading"/>
-            </div>
-            <div class="row">
-                <label for="amount">Amount : </label>
-                <input type="text" name="amount" formControlName="amount"/>
-            </div>
-            <div class="row">
-                <label for="heading">Details : </label>
-                <input type="text" name="description" formControlName="description"/>
-            </div>
-            <div class="row">
-                <label for="heading">Date : </label>
-                <input type="date" name="dueDate" placeholder=" " formControlName="dueDate"/>
-            </div>
-
-            <button type="submit" name="submit" class="btn submit" [disabled]="!formGroup.valid">
-                <i class="material-icons">add_circle_outline</i>
-            </button>
-        </form>
-        <div class="error-msg">
-            <p *ngIf="formGroup.get('heading').hasError('required')">*Title required</p>
-            <p *ngIf="formGroup.get('amount').hasError('pattern')">*Amount should be numeric only</p>
-        </div>
-    </div>
-</div> -->
-
-
 <div class="cont-0">
     
     <div class="cont-1">
-        <!-- <div class="error message" *ngIf="error">
-            *{{ error }}
-        </div> -->
+        <div class="error-msg" *ngIf="errorMessage">
+            *{{errorMessage}}
+        </div>
         <form class="frm" [formGroup]="formGroup" novalidate (ngSubmit)="onSubmit(formGroup.value)" #myForm="ngForm"> 
             
                 <label for="heading">Title : </label>
@@ -70,11 +36,6 @@
                 <!-- <button type="submit" name="signUp" class="btn submit" >{{ action | uppercase }}</button> -->
             </div>
         </form>
-        <div class="error-msg" *ngIf="errorMessage">*{{errorMessage}}</div>
-        <!-- <div class="error-msg">
-            <p *ngIf="formGroup.get('heading').hasError('required')">Title required</p>
-            <p *ngIf="formGroup.get('amount').hasError('pattern')">*Amount should be numeric only</p>
-        </div> -->
         
     </div>
     </div>

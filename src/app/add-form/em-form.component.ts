@@ -16,7 +16,6 @@ export class ExpenseFormComponent implements OnInit{
     expenseItem: Expense;
     errorMessage;
     @Output() addItem = new EventEmitter();
-    // totalExpense: number = 0;
 
     constructor(private formBuilder: FormBuilder, private expenseManagerService: ExpenseManagerService, private router: Router) { }
 
@@ -26,32 +25,28 @@ export class ExpenseFormComponent implements OnInit{
                 heading : this.formBuilder.control('',Validators.required),
                 amount: this.formBuilder.control('',Validators.required),
                 description: this.formBuilder.control(''),
-                date: this.formBuilder.control(''),
+                date: this.formBuilder.control('',Validators.required),
             });
-        console.log("------------------>called add form ngOnInit");
     }
 
     onSubmit(expenseItem: Expense){
         if(this.formGroup.valid){
-            console.log("expenseItem.id"+expenseItem.id);
             this.expenseManagerService.add(expenseItem)
             .then(docRef => {
-                console.log("====ADDED DOC whose DOCREF id ===>>>"+docRef.id);
-                // console.log("====DOCREF id type===>>>"+typeof docRef.id);
+                //updating the id of expense item to docRef this will help in finding the expense item document.
                 this.expenseManagerService.assignExpenseId(docRef);
             });
-            // this.expenseManagerService.calculateTotalExpense();
-            // this.totalExpense = this.expenseManagerService.calculateTotalExpense();
             this.ngOnInit();
             this.addItem.emit(expenseItem);
             this.errorMessage = '';
-            console.log("---------------------------------->end OnSubmit addForms");
         }   
         else{
             if(this.formGroup.get('heading').hasError('required'))
-                this.errorMessage = 'Name field is required';
-            if(this.formGroup.get('amount').hasError('required'))
+                this.errorMessage = 'Title field is required';
+            else if(this.formGroup.get('amount').hasError('required'))
                 this.errorMessage = 'Amount field is required';
+            else if(this.formGroup.get('date').hasError('required'))
+                this.errorMessage = 'Date field is required';
         }     
     }
     

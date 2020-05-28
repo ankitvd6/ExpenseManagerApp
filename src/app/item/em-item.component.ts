@@ -3,10 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ExpenseManagerService } from '../em.service';
 import { Expense } from '../expense';
+import { AngularFireAuth } from '@angular/fire/auth';
 
-/*  This coponent is being used to display the expense item details the url will have a parameter 'heading' 
-    which is the heading of the expense that user wants to know the details of; 
-    When the user clicks on one of the expense-list-item he/she will be directed to this component. 
+/*  
+This coponent is being used to display the expense item details the url will have a parameter 'id' 
+which is the id of the expense that user wants to know the details of; 
+When the user clicks on one of the expense-list-item he/she will be directed to this component. 
 */
 
 @Component({
@@ -18,15 +20,15 @@ export class ExpenseItemComponent implements OnInit{
     expenseItem: Expense;
 
     constructor(private activatedRoute: ActivatedRoute, private location: Location, private expenseManagerService: ExpenseManagerService,
-        private router: Router){}
+        private router: Router, private afAuth: AngularFireAuth){}
 
     ngOnInit(): void {
-        let eid = this.activatedRoute.snapshot.paramMap.get('id');
+        let eid = this.activatedRoute.snapshot.paramMap.get('id');        
         this.getExpense(eid);
     }
         
     getExpense(eid: string): void{
-        this.expenseManagerService.findExpenseById(eid).subscribe(item => {
+        this.expenseManagerService.findExpenseById(eid).subscribe(item => {            
             this.expenseItem = item;
         });
     }
