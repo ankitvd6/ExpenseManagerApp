@@ -33,7 +33,7 @@
     /* padding: 2px 4px; */
     /* margin: 10px 20px; */
     margin-top: 20px;
-    margin-right: 5px;
+    margin-right: 10px;
     font: 15px Arial, Helvetica, sans-serif;
     height: 25px;
     
@@ -106,4 +106,26 @@ a{
     opacity: 0.6;
     border: 1px solid red;
     border-radius: 4px;
+}
+
+@media screen and (max-width:1000px){
+    .cont-0 {
+        padding: 40px 20px;
+    }
+    .cont-1{
+        /* display: inline-block; */
+        text-align: center;
+        width: 60%;
+        min-height: 300px;
+        height: auto;
+        margin: 40px auto;
+    }
+    .frm{
+        grid-template-columns: 40% 60%;
+        width: 100%;
+        height: auto;
+        min-height: 260px;
+        font-size: 13px;
+        gap: 2px 2px;
+    }
 }
