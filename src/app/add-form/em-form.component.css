@@ -49,13 +49,15 @@
     color: #A8A8A8;
     font-size: 35px;  
     cursor: pointer;
+    outline: none;
+    background-color: #fff;
 }
 .btn.submit:focus {
     box-shadow: none;
 }
 
 [type="date"] {
-    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  80% 50% no-repeat ;
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
     width: auto;
 }
 [type="date"]::-webkit-inner-spin-button {
@@ -93,6 +95,25 @@ a{
     font-size: 12px;
     color: red;
     display: inline;
+}
+
+
+.go-back {
+    width: 70px;
+    margin: 40px auto;
+}
+.btn-back {
+    background-color: #3b5998;
+    padding: 2px 4px;
+    border: none;
+    color: white;
+    outline: none;
+    width: 70px;
+    height: 28px;
+}
+.btn-back:hover {
+    background-color: red;
+    cursor: pointer;
 }
 
 @media screen and (max-width:1000px){

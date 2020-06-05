@@ -5,13 +5,25 @@
     position: relative;
 }
 .custom-jumbotron {
+    position: relative;
     background-color: #e9ecef;
     padding: 30px 60px;
     width: 100%;
-    margin: 40px 0;
+    margin: 0 0 40px;
     line-height: 40px;
     font-size: 24px;
     font-weight: 600 ;
+}
+.custom-jumbotron a{
+    /* position: absolute; */
+    /* right: 10px; */
+    text-decoration: none;
+    color: white;
+    background-color: #3b5998;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-left: 60px;
 }
 /* -----------------style for  feature box containing search box and sort filters-------------- */
 .feature-box{
@@ -93,7 +105,6 @@
     /* text-align: right; */
 }
 button {
-    outline: none;
     background-color: #3b5998;
     padding: 2px 4px;
     border: none;
@@ -120,7 +131,19 @@ li:hover{
     cursor: pointer;
 }
 
+.msg-standard {
+    width: 200px;
+    margin: 60px auto;
+    font-style: italic;
+    /* color: rgb(194, 191, 191); */
+    color: #A8A8A8;
+    font-weight: 500;
+}
+
 @media screen and (max-width: 1000px) {
+    .custom-jumbotron a{
+        margin-left: 20px;
+    }
     .feature-box {
         flex-direction: column;
         font-size: 13px;

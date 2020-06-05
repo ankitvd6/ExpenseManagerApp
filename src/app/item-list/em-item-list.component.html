@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/c9b33c0b6c.js" crossorigin="anonymous"></script>
 
 <body>
-<div class="custom-jumbotron" *ngIf="totalExpense">
+<div class="custom-jumbotron" >
     Total expense: {{ totalExpense }}
+    <a [routerLink]="['/add']">New</a>
 </div>
-<script src="https://kit.fontawesome.com/c9b33c0b6c.js" crossorigin="anonymous"></script>
 <div class="feature-box">
     <div class="search-box">
         <p>Search Expense: </p><input type="text" [(ngModel)]="searchInput" placeholder="Enter name">
@@ -43,6 +44,7 @@
             </div>
         </li>
     </ul>
+    <p *ngIf="totalExpense === 0" class="msg-standard">No expenses to show...</p>
 </section>
 
 </body>
