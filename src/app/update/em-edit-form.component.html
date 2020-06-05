@@ -37,6 +37,7 @@
 <div class="cont-0">
     
     <div class="cont-1">
+        <p class="msg-standard">Edit the details</p>
         <div class="error-msg" *ngIf="errorMessage">
             *{{errorMessage}}
         </div>
@@ -68,9 +69,10 @@
                     <i class="material-icons">add_circle_outline</i>
                 </button>
             </div>
-        </form>       
+        </form>   
+        <div class="go-back">
+            <button type="button" (click)="goBack()" class="btn-back">Home</button>
+        </div>    
     </div>
-    <div class="go-back">
-        <button type="button" (click)="goBack()" class="btn-back">Home</button>
-    </div>
+    
 </div>

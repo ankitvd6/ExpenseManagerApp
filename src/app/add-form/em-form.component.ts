@@ -17,7 +17,8 @@ export class ExpenseFormComponent implements OnInit{
     errorMessage;
     @Output() addItem = new EventEmitter();
 
-    constructor(private formBuilder: FormBuilder, private expenseManagerService: ExpenseManagerService, private router: Router) { }
+    constructor(private formBuilder: FormBuilder, private expenseManagerService: ExpenseManagerService, 
+        private router: Router) { }
 
     ngOnInit() {
             this.formGroup = this.formBuilder.group({
@@ -39,15 +40,20 @@ export class ExpenseFormComponent implements OnInit{
             this.ngOnInit();
             this.addItem.emit(expenseItem);
             this.errorMessage = '';
+            this.router.navigateByUrl('/');
         }   
         else{
             if(this.formGroup.get('heading').hasError('required'))
-                this.errorMessage = 'Title field is required';
+                this.errorMessage = 'Title Amount and Date fields are required';
             else if(this.formGroup.get('amount').hasError('required'))
-                this.errorMessage = 'Amount field is required';
+                this.errorMessage = 'Title Amount and Date fields are required';
             else if(this.formGroup.get('date').hasError('required'))
-                this.errorMessage = 'Date field is required';
+                this.errorMessage = 'Title Amount and Date fields are required';
         }     
+    }
+
+    goBack(): void {
+        this.router.navigateByUrl('/');
     }
     
 }

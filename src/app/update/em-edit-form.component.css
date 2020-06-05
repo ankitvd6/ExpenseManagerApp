@@ -166,6 +166,14 @@
     background-color: red;
     cursor: pointer;
 }
+.msg-standard {
+    width: 200px;
+    margin: 60px auto;
+    font-style: italic;
+    /* color: rgb(194, 191, 191); */
+    color: #A8A8A8;
+    font-weight: 500;
+}
 
 @media screen and (max-width:1000px){
     .cont-0 {

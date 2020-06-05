@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExpenseEditFormComponent } from './update/em-edit-form.component';
 import { LoginComponent } from './login/login.component';
 import { map } from 'rxjs/operators';
+import { ExpenseFormComponent } from './add-form/em-form.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInUserToDashboard = () => map(user => user ? ['dashboard', (user as any).uid]: true);
@@ -18,6 +19,7 @@ const routes: Routes =[
   { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInUserToDashboard}},
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'dashboard/:id', component: DashboardComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: onlyAllowSelf}},
+  { path: 'add', component: ExpenseFormComponent },
   { path: 'edit/:id', component: ExpenseEditFormComponent },
   { path: ':id', component: ExpenseItemComponent},
   
